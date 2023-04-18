@@ -1,6 +1,7 @@
 package Homework;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -31,27 +32,21 @@ import javax.swing.text.html.FormView;
 public class ShopOfNoteBooks {
 
   public static void main(String[] args) {
-    Class_NoteBook noteBook1 = new Class_NoteBook(4, 500, "Windows", "gray");
-    Class_NoteBook noteBook2 = new Class_NoteBook(8, 1000, "MacOS", "black");
-    Class_NoteBook noteBook3 = new Class_NoteBook(16, 800, "Linux", "gray");
-    Class_NoteBook noteBook4 = new Class_NoteBook(8, 800, "Windows", "red");
-    Class_NoteBook noteBook5 = new Class_NoteBook(32, 2000, "MacOS", "gray");
+    Class_NoteBook noteBook1 = new Class_NoteBook(1, 4, 500, "Windows", "gray");
+    Class_NoteBook noteBook2 = new Class_NoteBook(2, 8, 1000, "MacOS", "black");
+    Class_NoteBook noteBook3 = new Class_NoteBook(3, 16, 800, "Linux", "gray");
+    Class_NoteBook noteBook4 = new Class_NoteBook(4, 8, 800, "Windows", "red");
+    Class_NoteBook noteBook5 = new Class_NoteBook(5, 32, 2000, "MacOS", "silver");
 
-    ArrayList<Class_NoteBook> NoteBook1 = new ArrayList<Class_NoteBook>();
-    NoteBook1.add(noteBook1);
-    NoteBook1.add(noteBook2);
-    NoteBook1.add(noteBook3);
-    NoteBook1.add(noteBook4);
-    NoteBook1.add(noteBook5);
+    HashMap<String, Class_NoteBook> notebookMap = new HashMap<>();
+    notebookMap.put("notebook1", noteBook1);
+    notebookMap.put("notebook2", noteBook2);
+    notebookMap.put("notebook3", noteBook3);
+    notebookMap.put("notebook4", noteBook4);
+    notebookMap.put("notebook5", noteBook5);
+    System.out.println(notebookMap.get("notebook1").getRAM());
 
-    // for (int i = 0; i < NoteBook1.size(); i++) {
-    //   Class_NoteBook notebook = NoteBook1.get(i);
-    //   System.out.println("Notebook " + (i + 1) + ":");
-    //   System.out.println("  RAM size: " + notebook.getRAM());
-    //   System.out.println("  OS: " + notebook.getOperating_system());
-    //   System.out.println("  Color: " + notebook.getColor());
-    //   System.out.println("  Mamory: " + notebook.getMemory());
-    //}
+    HashMap<String, Class_NoteBook> sortedMap = new HashMap<>();
     System.out.println("Введите цифру, соответствующую необходимому критерию:");
     System.out.println("1 - ОЗУ");
     System.out.println("2 - Объем ЖД");
@@ -59,21 +54,90 @@ public class ShopOfNoteBooks {
     System.out.println("4 - Цвет");
     Scanner sc = new Scanner(System.in);
     int NumOfComatd = sc.nextInt();
-    if (NumOfComatd ==1){
+
+    if (NumOfComatd == 1) {
       System.out.println("Введите минимальное значение ОЗУ");
       int variable = sc.nextInt();
-    }
-    else if (NumOfComatd == 2){
+      if (variable <= (notebookMap.get("notebook1").getRAM())) {
+        sortedMap.put("notebook1", noteBook1);
+      }
+      if (variable <= notebookMap.get("notebook2").getRAM()) {
+        sortedMap.put("notebook2", noteBook2);
+      }
+      if (variable <= notebookMap.get("notebook3").getRAM()) {
+        sortedMap.put("notebook3", noteBook3);
+      }
+      if (variable <= notebookMap.get("notebook4").getRAM()) {
+        sortedMap.put("notebook4", noteBook4);
+      }
+      if (variable <= notebookMap.get("notebook5").getRAM()) {
+        sortedMap.put("notebook5", noteBook5);
+      }
+
+    } else if (NumOfComatd == 2) {
       System.out.println("Введите минимальное значение Объема ЖД");
-      int variable = sc.nextInt();
+      int variablehdd = sc.nextInt();
+      if (variablehdd <= (notebookMap.get("notebook1").getMemory())) {
+        sortedMap.put("notebook1", noteBook1);
+      }
+      if (variablehdd <= notebookMap.get("notebook2").getMemory()) {
+        sortedMap.put("notebook2", noteBook2);
+      }
+      if (variablehdd <= notebookMap.get("notebook3").getMemory()) {
+        sortedMap.put("notebook3", noteBook3);
+      }
+      if (variablehdd <= notebookMap.get("notebook4").getMemory()) {
+        sortedMap.put("notebook4", noteBook4);
+      }
+      if (variablehdd <= notebookMap.get("notebook5").getMemory()) {
+        sortedMap.put("notebook5", noteBook5);
+      }
+
+    } else if (NumOfComatd == 3) {
+      sc.nextLine();
+      System.out.println("Введите название ОС: Windows, MacOS или Linux");
+      String variable1 = sc.nextLine();
+      if (variable1.equals(notebookMap.get("notebook1").getOperating_system())) {
+        sortedMap.put("notebook1", noteBook1);
+      }
+      if (variable1.equals(notebookMap.get("notebook2").getOperating_system())) {
+        sortedMap.put("notebook2", noteBook2);
+      }
+      if (variable1.equals(notebookMap.get("notebook3").getOperating_system())) {
+        sortedMap.put("notebook3", noteBook3);
+      }
+      if (variable1.equals(notebookMap.get("notebook4").getOperating_system())) {
+        sortedMap.put("notebook4", noteBook4);
+      }
+      if (variable1.equals(notebookMap.get("notebook5").getOperating_system())) {
+        sortedMap.put("notebook5", noteBook5);
+      }
+      
+    } else if (NumOfComatd == 4) {
+      sc.nextLine();
+      System.out.println("Введите Цвет: silver, black, gray, red");
+      String variable2 = sc.nextLine();
+      if (variable2.equals(notebookMap.get("notebook1").getColor())) {
+        sortedMap.put("notebook1", noteBook1);
+      }
+      if (variable2.equals(notebookMap.get("notebook2").getColor())) {
+        sortedMap.put("notebook2", noteBook2);
+      }
+      if (variable2.equals(notebookMap.get("notebook3").getColor())) {
+        sortedMap.put("notebook3", noteBook3);
+      }
+      if (variable2.equals(notebookMap.get("notebook4").getColor())) {
+        sortedMap.put("notebook4", noteBook4);
+      }
+      if (variable2.equals(notebookMap.get("notebook5").getColor())) {
+        sortedMap.put("notebook5", noteBook5);
+      }
     }
-    else if (NumOfComatd == 3){
-      System.out.println("Введите название ОС");
-      String variable = sc.next();
-    }
-    else if (NumOfComatd == 4){
-      System.out.println("Введите Цвет");
-      String variable = sc.next();
+
+    for (HashMap.Entry<String, Class_NoteBook> entry : sortedMap.entrySet()) {
+      String key = entry.getKey();
+      Class_NoteBook value = entry.getValue();
+      System.out.println(key + ": " + value);
     }
   }
 }
