@@ -44,7 +44,6 @@ public class ShopOfNoteBooks {
     notebookMap.put("notebook3", noteBook3);
     notebookMap.put("notebook4", noteBook4);
     notebookMap.put("notebook5", noteBook5);
-    System.out.println(notebookMap.get("notebook1").getRAM());
 
     HashMap<String, Class_NoteBook> sortedMap = new HashMap<>();
     System.out.println("Введите цифру, соответствующую необходимому критерию:");
